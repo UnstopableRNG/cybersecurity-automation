@@ -12,24 +12,19 @@ The Python component reads the generated hashes and queries the VirusTotal API t
 
 ## Workflow
 
-```text
-Windows Processes
-       |
-       v
-PowerShell
-       |
-       | Collect process name,
-       | PID, file path and SHA-256 hash
-       v
-hashes.csv
-       |
-       v
-Python
-       |
-       | Query VirusTotal API
-       v
+Windows Processes  
+↓  
+PowerShell  
+↓  
+Collect process name, PID, file path and SHA-256 hash  
+↓  
+hashes.csv  
+↓  
+Python  
+↓  
+Query VirusTotal API  
+↓  
 report.json
-```
 
 ## Technologies
 
@@ -76,7 +71,7 @@ The script also includes a delay between API requests to respect the VirusTotal 
 
 ## Input and Output
 
-### `hashes.csv`
+### hashes.csv
 
 Contains information collected from running processes, including:
 
@@ -85,7 +80,7 @@ Contains information collected from running processes, including:
 - File path
 - SHA-256 hash
 
-### `report.json`
+### report.json
 
 Contains the results returned from the VirusTotal analysis, including:
 
@@ -106,15 +101,11 @@ Python 3 and PowerShell are required.
 
 Install the Python dependencies:
 
-```bash
-pip install requests python-dotenv
-```
+    pip install requests python-dotenv
 
 Create a `.env` file in the project directory:
 
-```text
-VT_API_KEY=your_api_key_here
-```
+    VT_API_KEY=your_api_key_here
 
 Do not upload your real API key to GitHub.
 
@@ -124,29 +115,21 @@ Do not upload your real API key to GitHub.
 
 Run the PowerShell script:
 
-```powershell
-.\Get-ProcessHashes.ps1
-```
+    .\Get-ProcessHashes.ps1
 
 This generates:
 
-```text
-hashes.csv
-```
+    hashes.csv
 
 ### 2. Run the Python analysis
 
 Run:
 
-```bash
-python vt_hash_checker.py
-```
+    python vt_hash_checker.py
 
 The results are written to:
 
-```text
-report.json
-```
+    report.json
 
 ## Example Workflow
 
